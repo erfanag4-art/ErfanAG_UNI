@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پورتفولیوی دانشگاهی من</title>
+    <style>
+        /* تنظیمات کلی */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --accent-color: #06b6d4;
+            --text-color: #1f2937;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* هدر */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* بخش اصلی */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(124, 58, 237, 0.05));
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+        
+        /* بخش‌های مختلف */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        /* ارائه‌ها */
+        .presentations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .presentation-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .presentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .presentation-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .presentation-info {
+            padding: 1.5rem;
+        }
+        
+        .presentation-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .presentation-info .date {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .presentation-info .description {
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* دسته‌بندی‌ها */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        /* گالری */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* درباره من */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .info-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .info-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* تماس */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        /* فوتر */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .presentations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* مودال برای نمایش عکس‌ها */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            margin-top: 5%;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" id="siteLogo">پورتفولیوی دانشگاهی</div>
+                <ul class="nav-links">
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#presentations">ارائه‌ها</a></li>
+                    <li><a href="#gallery">گالری</a></li>
+                    <li><a href="#about">درباره من</a></li>
+                    <li><a href="#contact">تماس</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- بخش اصلی -->
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="https://via.placeholder.com/200" alt="عکس پروفایل" class="profile-img" id="profileImage">
+            <h1 id="mainTitle">پورتفولیوی دانشگاهی من</h1>
+            <p id="mainSubtitle">مجموعه‌ای از ارائه‌ها، پروژه‌ها و دستاوردهای تحصیلی</p>
+            <button class="btn" onclick="scrollToSection('presentations')">مشاهده ارائه‌ها</button>
+        </div>
+    </section>
+
+    <!-- ارائه‌ها -->
+    <section id="presentations">
+        <div class="container">
+            <h2 class="section-title">ارائه‌های دانشگاهی</h2>
+            
+            <div class="categories">
+                <button class="category-btn active" onclick="filterPresentations('all')">همه</button>
+                <button class="category-btn" onclick="filterPresentations('computer')">کامپیوتر</button>
+                <button class="category-btn" onclick="filterPresentations('math')">ریاضی</button>
+                <button class="category-btn" onclick="filterPresentations('physics')">فیزیک</button>
+                <button class="category-btn" onclick="filterPresentations('other')">سایر</button>
+            </div>
+            
+            <div class="presentations-grid" id="presentationsContainer">
+                <!-- ارائه‌ها به صورت داینامیک اضافه می‌شوند -->
+            </div>
+        </div>
+    </section>
+
+    <!-- گالری -->
+    <section id="gallery" style="background: var(--light-bg);">
+        <div class="container">
+            <h2 class="section-title">گالری تصاویر</h2>
+            <div class="gallery-grid" id="galleryContainer">
+                <!-- تصاویر به صورت داینامیک اضافه می‌شوند -->
+            </div>
+        </div>
+    </section>
+
+    <!-- درباره من -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">درباره من</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 id="aboutTitle">معرفی</h3>
+                    <p id="aboutText">
+                        دانشجوی رشته [نام رشته] در دانشگاه [نام دانشگاه]. علاقه‌مند به [علایق شما] 
+                        و دارای تجربه در زمینه [تجربیات شما].
+                    </p>
+                    
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="number" id="projectsCount">15+</div>
+                            <div>پروژه انجام شده</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="number" id="presentationsCount">8+</div>
+                            <div>ارائه دانشگاهی</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="number" id="gpa">3.8</div>
+                            <div>معدل</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <h3>مهارت‌ها</h3>
+                    <div class="skills-list" id="skillsList">
+                        <!-- مهارت‌ها به صورت داینامیک اضافه می‌شوند -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تماس -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">تماس با من</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="contactType">نوع پیام</label>
+                    <select id="contactType">
+                        <option value="presentation">درخواست ارائه</option>
+                        <option value="collaboration">همکاری پروژه</option>
+                        <option value="question">سوال درسی</option>
+                        <option value="other">سایر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">نام و نام خانوادگی</label>
+                    <input type="text" id="name" placeholder="نام شما">
+                </div>
+                <div class="form-group">
+                    <label for="email">ایمیل دانشگاهی</label>
+                    <input type="email" id="email" placeholder="student@university.ac.ir">
+                </div>
+                <div class="form-group">
+                    <label for="message">پیام</label>
+                    <textarea id="message" rows="5" placeholder="پیام شما..."></textarea>
+                </div>
+                <button class="btn" onclick="sendMessage()">ارسال پیام</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" id="emailLink">📧</a>
+                <a href="#" id="linkedinLink">💼</a>
+                <a href="#" id="universityLink">🏫</a>
+            </div>
+            <p id="footerText">© 2024 پورتفولیوی دانشگاهی - تمام حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <!-- مودال برای نمایش عکس‌ها -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // داده‌های قابل تنظیم
+        const config = {
+            // اطلاعات شخصی
+            name: "نام شما",
+            university: "دانشگاه شما",
+            major: "رشته تحصیلی شما",
+            aboutText: "دانشجوی رشته [نام رشته] در دانشگاه [نام دانشگاه]. علاقه‌مند به [علایق شما] و دارای تجربه در زمینه [تجربیات شما].",
+            
+            // آمار
+            projectsCount: "15+",
+            presentationsCount: "8+",
+            gpa: "3.8",
+            
+            // مهارت‌ها
+            skills: [
+                "PowerPoint پیشرفته",
+                "تحقیق و پژوهش",
+                "ارائه مطلب",
+                "تیم‌ورکی",
+                "برنامه‌نویسی",
+                "تحلیل داده"
+            ],
+            
+            // ارائه‌ها
+            presentations: [
+                {
+                    title: "هوش مصنوعی در پزشکی",
+                    date: "1402/08/15",
+                    description: "ارائه کامل در مورد کاربردهای هوش مصنوعی در تشخیص بیماری‌ها",
+                    category: "computer",
+                    tags: ["هوش مصنوعی", "پزشکی", "فناوری"]
+                },
+                {
+                    title: "ریاضیات در رمزنگاری",
+                    date: "1402/07/20",
+                    description: "بررسی مبانی ریاضی الگوریتم‌های رمزنگاری مدرن",
+                    category: "math",
+                    tags: ["ریاضی", "امنیت", "الگوریتم"]
+                },
+                {
+                    title: "فیزیک کوانتوم",
+                    date: "1402/06/10",
+                    description: "مبانی فیزیک کوانتوم و کاربردهای آن",
+                    category: "physics",
+                    tags: ["فیزیک", "کوانتوم", "علمی"]
+                }
+            ],
+            
+            // تصاویر گالری
+            gallery: [
+                "https://via.placeholder.com/400x300/4f46e5/ffffff?text=ارائه+1",
+                "https://via.placeholder.com/400x300/7c3aed/ffffff?text=ارائه+2",
+                "https://via.placeholder.com/400x300/06b6d4/ffffff?text=پروژه+1",
+                "https://via.placeholder.com/400x300/10b981/ffffff?text=پروژه+2"
+            ],
+            
+            // لینک‌های ارتباطی
+            contact: {
+                email: "student@university.ac.ir",
+                linkedin: "#",
+                university: "#"
+            }
+        };
+
+        // فیلتر ارائه‌ها
+        function filterPresentations(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const presentations = document.querySelectorAll('.presentation-card');
+            presentations.forEach(presentation => {
+                if (category === 'all' || presentation.dataset.category === category) {
+                    presentation.style.display = 'block';
+                } else {
+                    presentation.style.display = 'none';
+                }
+            });
+        }
+
+        // اسکرول به بخش مورد نظر
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // ارسال پیام
+        function sendMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const contactType = document.getElementById('contactType').value;
+            
+            if(name && email && message) {
+                alert(`پیام ${contactType} شما با موفقیت ارسال شد!`);
+                // ریست فرم
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                alert('لطفا تمام فیلدها را پر کنید');
+            }
+        }
+
+        // نمایش مودال عکس
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // بارگذاری اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            // تنظیم اطلاعات شخصی
+            document.getElementById('mainTitle').textContent = `پورتفولیوی ${config.name}`;
+            document.getElementById('siteLogo').textContent = `پورتفولیوی ${config.name}`;
+            document.getElementById('aboutText').textContent = config.aboutText;
+            
+            // تنظیم آمار
+            document.getElementById('projectsCount').textContent = config.projectsCount;
+            document.getElementById('presentationsCount').textContent = config.presentationsCount;
+            document.getElementById('gpa').textContent = config.gpa;
+            
+            // اضافه کردن مهارت‌ها
+            const skillsList = document.getElementById('skillsList');
+            config.skills.forEach(skill => {
+                const skillElement = document.createElement('div');
+                skillElement.className = 'tag';
+                skillElement.textContent = skill;
+                skillElement.style.marginBottom = '0.5rem';
+                skillsList.appendChild(skillElement);
+            });
+            
+            // اضافه کردن ارائه‌ها
+            const presentationsContainer = document.getElementById('presentationsContainer');
+            config.presentations.forEach(presentation => {
+                const presentationElement = document.createElement('div');
+                presentationElement.className = 'presentation-card';
+                presentationElement.dataset.category = presentation.category;
+                
+                presentationElement.innerHTML = `
+                    <div class="presentation-img"></div>
+                    <div class="presentation-info">
+                        <h3>${presentation.title}</h3>
+                        <div class="date">${presentation.date}</div>
+                        <div class="description">${presentation.description}</div>
+                        <div class="tags">
+                            ${presentation.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                presentationsContainer.appendChild(presentationElement);
+            });
+            
+            // اضافه کردن گالری
+            const galleryContainer = document.getElementById('galleryContainer');
+            config.gallery.forEach(imageSrc => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `<img src="${imageSrc}" alt="گالری" onclick="openModal('${imageSrc}')">`;
+                galleryContainer.appendChild(galleryItem);
+            });
+            
+            // تنظیم لینک‌های ارتباطی
+            document.getElementById('emailLink').href = `mailto:${config.contact.email}`;
+            document.getElementById('linkedinLink').href = config.contact.linkedin;
+            document.getElementById('universityLink').href = config.contact.university;
+        });
+
+        // بستن مودال با کلیک خارج از عکس
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
