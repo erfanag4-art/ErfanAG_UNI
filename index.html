@@ -459,16 +459,15 @@
     <section id="presentations">
         <div class="container">
             <h2 class="section-title">ارائه‌های دانشگاهی</h2>
-<div class="categories">
-    <button class="category-btn active" onclick="filterPresentations('all')">همه</button>
-    <button class="category-btn" onclick="filterPresentations('organization')">مبانی سازمان</button>
-    <button class="category-btn" onclick="filterPresentations('computer')">کامپیوتر در مدیریت</button>
-    <button class="category-btn" onclick="filterPresentations('islamic')">تاریخ اسلام</button>
-    <button class="category-btn" onclick="filterPresentations('math')">ریاضیات مدیریت</button>
-    <button class="category-btn" onclick="filterPresentations('persian')">فارسی عمومی</button>
-    <button class="category-btn" onclick="filterPresentations('accounting')">اصول حسابداری</button>
-</div>
- 
+            <div class="categories">
+                <button class="category-btn active" onclick="filterPresentations('all')">همه</button>
+                <button class="category-btn" onclick="filterPresentations('organization')">مبانی سازمان</button>
+                <button class="category-btn" onclick="filterPresentations('computer')">کامپیوتر در مدیریت</button>
+                <button class="category-btn" onclick="filterPresentations('islamic')">تاریخ اسلام</button>
+                <button class="category-btn" onclick="filterPresentations('math')">ریاضیات مدیریت</button>
+                <button class="category-btn" onclick="filterPresentations('persian')">فارسی عمومی</button>
+                <button class="category-btn" onclick="filterPresentations('accounting')">اصول حسابداری</button>
+            </div>
             
             <div class="presentations-grid" id="presentationsContainer">
                 <!-- ارائه‌ها به صورت داینامیک اضافه می‌شوند -->
@@ -599,25 +598,46 @@
             // ارائه‌ها
             presentations: [
                 {
-                    title: "هوش مصنوعی در پزشکی",
-                    date: "1402/08/15",
-                    description: "ارائه کامل در مورد کاربردهای هوش مصنوعی در تشخیص بیماری‌ها",
+                    title: "مبانی سازمان و مدیریت",
+                    date: "1403/08/20",
+                    description: "ارائه کامل در مورد اصول و مبانی مدیریت سازمانی",
+                    category: "organization",
+                    tags: ["مدیریت", "سازمان", "اصول مدیریت"]
+                },
+                {
+                    title: "کامپیوتر و کاربرد آن در مدیریت", 
+                    date: "1403/08/15",
+                    description: "بررسی کاربردهای نرم‌افزارهای کامپیوتری در مدیریت",
                     category: "computer",
-                    tags: ["هوش مصنوعی", "پزشکی", "فناوری"]
+                    tags: ["کامپیوتر", "نرم‌افزار", "مدیریت"]
                 },
                 {
-                    title: "ریاضیات در رمزنگاری",
-                    date: "1402/07/20",
-                    description: "بررسی مبانی ریاضی الگوریتم‌های رمزنگاری مدرن",
+                    title: "تاریخ تحلیلی اسلام",
+                    date: "1403/08/10",
+                    description: "تحلیل رویدادهای مهم تاریخ اسلام", 
+                    category: "islamic",
+                    tags: ["تاریخ", "اسلام", "تحلیل"]
+                },
+                {
+                    title: "ریاضیات و کاربرد در مدیریت",
+                    date: "1403/08/05",
+                    description: "کاربرد ریاضیات در تصمیم‌گیری‌های مدیریتی",
                     category: "math",
-                    tags: ["ریاضی", "امنیت", "الگوریتم"]
+                    tags: ["ریاضی", "مدیریت", "تصمیم‌گیری"]
                 },
                 {
-                    title: "فیزیک کوانتوم",
-                    date: "1402/06/10",
-                    description: "مبانی فیزیک کوانتوم و کاربردهای آن",
-                    category: "physics",
-                    tags: ["فیزیک", "کوانتوم", "علمی"]
+                    title: "فارسی عمومی",
+                    date: "1403/07/25", 
+                    description: "ارائه در مورد ادبیات فارسی و دستور زبان",
+                    category: "persian",
+                    tags: ["فارسی", "ادبیات", "دستور زبان"]
+                },
+                {
+                    title: "اصول حسابداری",
+                    date: "1403/07/20",
+                    description: "مبانی و اصول اولیه حسابداری",
+                    category: "accounting",
+                    tags: ["حسابداری", "مالی", "اصول"]
                 }
             ],
             
